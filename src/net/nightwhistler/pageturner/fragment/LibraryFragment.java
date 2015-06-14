@@ -17,6 +17,7 @@
  * along with PageTurner.  If not, see <http://www.gnu.org/licenses/>.*
  */
 package net.nightwhistler.pageturner.fragment;
+import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.nio.channels.FileChannel;
 import org.json.JSONException;
@@ -53,6 +54,11 @@ import com.actionbarsherlock.view.MenuItem;
 import com.actionbarsherlock.widget.SearchView;
 import com.github.rtyley.android.sherlock.roboguice.fragment.RoboSherlockFragment;
 import com.google.inject.Inject;
+import com.parse.ParseException;
+import com.parse.ParseFile;
+import com.parse.ParseObject;
+import com.parse.ParseQuery;
+
 import jedi.functional.FunctionalPrimitives;
 import jedi.option.Option;
 import net.nightwhistler.htmlspanner.HtmlSpanner;
@@ -257,9 +263,64 @@ public class LibraryFragment extends RoboSherlockFragment implements ImportCallb
             //if(task.emptyLibrary==true){
             if(libraryService.findAllByTitle(null).getSize() == 0){
                 LOG.debug("VACIO copia los ficheros");
+
+
+
+                try {
+                    ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
+                            "AppBook");
+                    query.include("book");
+                 //   query.whereEqualTo("playerName", getString(R.string.id_book));
+                    query.orderByDescending("_created_at");
+                    List<ParseObject> ob = query.find();
+                    LOG.debug("ejecutar parse");
+                    //				for (ParseObject country : ob) {
+                    for(ParseObject book:ob){
+                        ParseObject books=book.getParseObject("book");
+                        ParseFile image =(ParseFile) books.get("cover");
+                        ParseFile epub =(ParseFile) books.get("container");
+                        try{
+                        LOG.debug("parse victor "+epub.getUrl());
+
+                        InputStream in = new ByteArrayInputStream(epub.getData()); //"epub/"+
+                            // LOG.debug("Se puede escribir  "+in.read());
+                            String tituloId= (String)books.get("eISBN");
+                            File outFile = new File(""+folder.getAbsolutePath() +"/"+tituloId);
+                            LOG.debug(" Name => "+tituloId + " => Se puede Escribir      "+outFile.canWrite());
+                            if(!outFile.exists()) {
+                                outFile.createNewFile();
+                            }
+
+                            writeToFile(in, ""+folder.getAbsolutePath() +"/"+tituloId);
+                            if(image!=null) {
+
+                                LOG.debug("parse victor if "+epub.getUrl());
+                                /*WorldPopulation map= new WorldPopulation();
+                                map.setTitle((String)books.get("title"));
+                                map.setAuthor((String)books.get("author"));
+                                map.setDescription((String)books.get("description"));
+                                map.setContainer(epub.getUrl());
+                                map.setCover(image.getUrl());
+                                worldpopulationlist.add(map);*/
+                            }else{
+                            }
+
+                            } catch (IOException e) {
+                                e.printStackTrace();
+                            }
+
+                    }
+
+                    //ob = query.find();
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
                 /**
                  *  INSERTANDO ARCHIVOS
                  */
+                /***
+                 ***
                 File folderToScan;
                 AssetManager am = context.getAssets();
                 try {
@@ -292,6 +353,8 @@ public class LibraryFragment extends RoboSherlockFragment implements ImportCallb
                 //folderToScan = new File(""+config.getLibraryFolder());
                 // startImport(folderToScan, true);
                 LOG.debug("FINALIZA COPIA");
+                ***
+                ***/
                 startImport(folder, true);
                 /**
                  *

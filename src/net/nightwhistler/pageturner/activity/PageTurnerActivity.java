@@ -13,6 +13,10 @@ import com.actionbarsherlock.view.Window;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 import com.google.inject.Inject;
 import com.limecreativelabs.sherlocksupport.ActionBarDrawerToggleCompat;
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseUser;
+
 import jedi.option.Option;
 import net.nightwhistler.pageturner.Configuration;
 import net.nightwhistler.pageturner.PageTurner;
@@ -54,6 +58,24 @@ public abstract class PageTurnerActivity extends RoboSherlockFragmentActivity {
     @Override
     protected final void onCreate(Bundle savedInstanceState) {
 
+//        String applicationID="xiuHBbYJgasyeeJuxhsCk2NHQWKZowYkJLChJ3k4";
+  //      String clienteKey="RKE8RbmmNDkz15a9ZrXx2ouZKJIAeIHxbPGLZRYW";
+
+        String applicationID=getString(R.string.id_app_parse);
+        String clienteKey=getString(R.string.client__key_parse);
+
+
+        // Add your initialization code here
+        Parse.initialize(this, applicationID, clienteKey);
+
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+        // If you would like all objects to be private by default, remove this
+        // line.
+        defaultACL.setPublicReadAccess(true);
+        ParseACL.setDefaultACL(defaultACL, true);
+
+        // CONFIG
         Configuration config = RoboGuice.getInjector(this).getInstance(Configuration.class);
         PageTurner.changeLanguageSetting(this, config);
 
