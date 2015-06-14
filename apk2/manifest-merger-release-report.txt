@@ -1,0 +1,153 @@
+-- Merging decision tree log ---
+manifest
+ADDED from AndroidManifest.xml:2:1
+	package
+		ADDED from AndroidManifest.xml:3:7
+	android:versionName
+		ADDED from AndroidManifest.xml:4:7
+	android:versionCode
+		ADDED from AndroidManifest.xml:5:7
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	xmlns:android
+		ADDED from AndroidManifest.xml:2:11
+	android:installLocation
+		ADDED from AndroidManifest.xml:6:7
+uses-sdk
+ADDED from AndroidManifest.xml:8:5
+MERGED from com.android.support:appcompat-v7:22.0.0:20:5
+MERGED from com.android.support:support-v4:22.0.0:20:5
+MERGED from com.actionbarsherlock:actionbarsherlock:4.4.0:3:3
+MERGED from com.android.support:support-v4:22.0.0:20:5
+	android:targetSdkVersion
+		ADDED from AndroidManifest.xml:10:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+	android:minSdkVersion
+		ADDED from AndroidManifest.xml:9:9
+		INJECTED from AndroidManifest.xml:0:0
+		INJECTED from AndroidManifest.xml:0:0
+uses-permission#android.permission.INTERNET
+ADDED from AndroidManifest.xml:12:5
+	android:name
+		ADDED from AndroidManifest.xml:12:22
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from AndroidManifest.xml:13:5
+	android:name
+		ADDED from AndroidManifest.xml:13:22
+application
+ADDED from AndroidManifest.xml:15:5
+MERGED from com.android.support:appcompat-v7:22.0.0:22:5
+MERGED from com.android.support:support-v4:22.0.0:22:5
+MERGED from com.actionbarsherlock:actionbarsherlock:4.4.0:4:3
+MERGED from com.android.support:support-v4:22.0.0:22:5
+	android:label
+		ADDED from AndroidManifest.xml:19:9
+	android:icon
+		ADDED from AndroidManifest.xml:18:9
+	android:description
+		ADDED from AndroidManifest.xml:17:9
+	android:theme
+		ADDED from AndroidManifest.xml:20:9
+	android:name
+		ADDED from AndroidManifest.xml:16:9
+receiver#net.nightwhistler.pageturner.activity.MediaButtonReceiver
+ADDED from AndroidManifest.xml:23:9
+	android:name
+		ADDED from AndroidManifest.xml:23:19
+intent-filter#android.intent.action.MEDIA_BUTTON
+ADDED from AndroidManifest.xml:24:10
+	android:priority
+		ADDED from AndroidManifest.xml:24:25
+action#android.intent.action.MEDIA_BUTTON
+ADDED from AndroidManifest.xml:25:14
+	android:name
+		ADDED from AndroidManifest.xml:25:22
+activity#net.nightwhistler.pageturner.activity.ReadingActivity
+ADDED from AndroidManifest.xml:29:9
+	android:label
+		ADDED from AndroidManifest.xml:31:13
+	android:name
+		ADDED from AndroidManifest.xml:30:13
+intent-filter#android.intent.action.VIEW+android.intent.category.BROWSABLE+android.intent.category.DEFAULT
+ADDED from AndroidManifest.xml:32:13
+action#android.intent.action.VIEW
+ADDED from AndroidManifest.xml:33:17
+	android:name
+		ADDED from AndroidManifest.xml:33:25
+category#android.intent.category.DEFAULT
+ADDED from AndroidManifest.xml:35:17
+	android:name
+		ADDED from AndroidManifest.xml:35:27
+category#android.intent.category.BROWSABLE
+ADDED from AndroidManifest.xml:36:17
+	android:name
+		ADDED from AndroidManifest.xml:36:27
+data
+ADDED from AndroidManifest.xml:38:17
+	android:mimeType
+		ADDED from AndroidManifest.xml:38:23
+intent-filter#android.intent.action.MAIN+android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:41:13
+action#android.intent.action.MAIN
+ADDED from AndroidManifest.xml:42:17
+	android:name
+		ADDED from AndroidManifest.xml:42:25
+category#android.intent.category.LAUNCHER
+ADDED from AndroidManifest.xml:44:17
+	android:name
+		ADDED from AndroidManifest.xml:44:27
+activity#net.nightwhistler.pageturner.activity.PageTurnerPrefsActivity
+ADDED from AndroidManifest.xml:47:9
+	android:label
+		ADDED from AndroidManifest.xml:49:13
+	android:name
+		ADDED from AndroidManifest.xml:48:13
+activity#net.nightwhistler.pageturner.activity.LibraryActivity
+ADDED from AndroidManifest.xml:50:9
+	android:label
+		ADDED from AndroidManifest.xml:52:13
+	android:name
+		ADDED from AndroidManifest.xml:51:13
+activity#net.nightwhistler.pageturner.activity.FileBrowseActivity
+ADDED from AndroidManifest.xml:53:9
+	android:label
+		ADDED from AndroidManifest.xml:55:13
+	android:name
+		ADDED from AndroidManifest.xml:54:13
+activity#net.nightwhistler.pageturner.activity.CatalogBookDetailsActivity
+ADDED from AndroidManifest.xml:57:9
+	android:label
+		ADDED from AndroidManifest.xml:59:17
+	android:name
+		ADDED from AndroidManifest.xml:58:17
+activity#net.nightwhistler.pageturner.activity.CatalogActivity
+ADDED from AndroidManifest.xml:72:9
+	android:label
+		ADDED from AndroidManifest.xml:74:13
+	android:name
+		ADDED from AndroidManifest.xml:73:13
+activity#net.nightwhistler.pageturner.activity.ManageSitesActivity
+ADDED from AndroidManifest.xml:76:9
+	android:label
+		ADDED from AndroidManifest.xml:78:13
+	android:name
+		ADDED from AndroidManifest.xml:77:13
+intent-filter#android.intent.category.DEFAULT+net.nightwhistler.pageturner.activity.ManageSitesActivity
+ADDED from AndroidManifest.xml:80:10
+action#net.nightwhistler.pageturner.activity.ManageSitesActivity
+ADDED from AndroidManifest.xml:81:14
+	android:name
+		ADDED from AndroidManifest.xml:81:22
+activity#org.acra.CrashReportDialog
+ADDED from AndroidManifest.xml:86:9
+	android:excludeFromRecents
+		ADDED from AndroidManifest.xml:88:13
+	android:launchMode
+		ADDED from AndroidManifest.xml:90:13
+	android:finishOnTaskLaunch
+		ADDED from AndroidManifest.xml:89:13
+	android:theme
+		ADDED from AndroidManifest.xml:91:13
+	android:name
+		ADDED from AndroidManifest.xml:87:13

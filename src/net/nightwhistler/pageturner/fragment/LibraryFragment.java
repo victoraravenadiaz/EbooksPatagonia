@@ -269,8 +269,9 @@ public class LibraryFragment extends RoboSherlockFragment implements ImportCallb
                 try {
                     ParseQuery<ParseObject> query = new ParseQuery<ParseObject>(
                             "AppBook");
+                    query.include("app");
                     query.include("book");
-                 //   query.whereEqualTo("playerName", getString(R.string.id_book));
+                    query.whereEqualTo("appleId", getString(R.string.id_book));
                     query.orderByDescending("_created_at");
                     List<ParseObject> ob = query.find();
                     LOG.debug("ejecutar parse");

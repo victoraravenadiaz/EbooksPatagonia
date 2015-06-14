@@ -2,7 +2,7 @@
 <resources>
     <string name="id_app_parse">xiuHBbYJgasyeeJuxhsCk2NHQWKZowYkJLChJ3k4</string>
     <string name="client__key_parse">RKE8RbmmNDkz15a9ZrXx2ouZKJIAeIHxbPGLZRYW</string>
-    <string name="id_book">Wf0ArakQy1</string>
+    <string name="id_book">com.ebooksPatagonia.Patagonia</string>
 
     <string name="pref_key">EboosPatagoniaState</string>
     
