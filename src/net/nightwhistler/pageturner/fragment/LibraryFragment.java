@@ -271,31 +271,39 @@ public class LibraryFragment extends RoboSherlockFragment implements ImportCallb
                             "AppBook");
                     query.include("app");
                     query.include("book");
-                    query.whereEqualTo("appleId", getString(R.string.id_book));
+                    LOG.debug("ejecutar parse =>" + getString(R.string.id_book));
+                    //query.whereEqualTo("app.appleId", getString(R.string.id_book));
                     query.orderByDescending("_created_at");
                     List<ParseObject> ob = query.find();
                     LOG.debug("ejecutar parse");
                     //				for (ParseObject country : ob) {
                     for(ParseObject book:ob){
+                        ParseObject app=book.getParseObject("app");
+                        String appleId= (String)app.get("appleId");
+
                         ParseObject books=book.getParseObject("book");
                         ParseFile image =(ParseFile) books.get("cover");
                         ParseFile epub =(ParseFile) books.get("container");
-                        try{
-                        LOG.debug("parse victor "+epub.getUrl());
+                        // FILTRO LOS LIBROS DE LA APLICACION
+                        if(appleId.equals( getString(R.string.id_book))){
 
-                        InputStream in = new ByteArrayInputStream(epub.getData()); //"epub/"+
-                            // LOG.debug("Se puede escribir  "+in.read());
-                            String tituloId= (String)books.get("eISBN");
-                            File outFile = new File(""+folder.getAbsolutePath() +"/"+tituloId);
-                            LOG.debug(" Name => "+tituloId + " => Se puede Escribir      "+outFile.canWrite());
-                            if(!outFile.exists()) {
-                                outFile.createNewFile();
-                            }
+                            try{
+                                LOG.debug("parse victor "+appleId);
+                                LOG.debug("parse victor "+epub.getUrl());
 
-                            writeToFile(in, ""+folder.getAbsolutePath() +"/"+tituloId);
-                            if(image!=null) {
+                                InputStream in = new ByteArrayInputStream(epub.getData()); //"epub/"+
+                                // LOG.debug("Se puede escribir  "+in.read());
+                                String tituloId= (String)books.get("eISBN");
+                                File outFile = new File(""+folder.getAbsolutePath() +"/"+tituloId);
+                                LOG.debug(" Name => "+tituloId + " => Se puede Escribir      "+outFile.canWrite());
+                                if(!outFile.exists()) {
+                                    outFile.createNewFile();
+                                }
 
-                                LOG.debug("parse victor if "+epub.getUrl());
+                                writeToFile(in, ""+folder.getAbsolutePath() +"/"+tituloId);
+                                if(image!=null) {
+
+                                    LOG.debug("parse victor if "+epub.getUrl());
                                 /*WorldPopulation map= new WorldPopulation();
                                 map.setTitle((String)books.get("title"));
                                 map.setAuthor((String)books.get("author"));
@@ -303,12 +311,14 @@ public class LibraryFragment extends RoboSherlockFragment implements ImportCallb
                                 map.setContainer(epub.getUrl());
                                 map.setCover(image.getUrl());
                                 worldpopulationlist.add(map);*/
-                            }else{
-                            }
+                                }else{
+                                }
 
                             } catch (IOException e) {
                                 e.printStackTrace();
                             }
+
+                        }
 
                     }
 
