@@ -21,6 +21,11 @@ package net.nightwhistler.pageturner;
 
 import android.app.Application;
 import android.content.Context;
+
+import com.parse.Parse;
+import com.parse.ParseACL;
+import com.parse.ParseUser;
+
 import org.acra.ACRA;
 import org.acra.annotation.ReportsCrashes;
 
@@ -36,6 +41,24 @@ public class PageTurner extends Application {
 
 	@Override
 	public void onCreate() {
+
+
+
+        String applicationID="xiuHBbYJgasyeeJuxhsCk2NHQWKZowYkJLChJ3k4";
+        String clienteKey="RKE8RbmmNDkz15a9ZrXx2ouZKJIAeIHxbPGLZRYW";
+
+        // Add your initialization code here
+        Parse.initialize(this, applicationID, clienteKey);
+
+
+        ParseUser.enableAutomaticUser();
+        ParseACL defaultACL = new ParseACL();
+
+        // If you would like all objects to be private by default, remove this
+        // line.
+        defaultACL.setPublicReadAccess(true);
+
+        ParseACL.setDefaultACL(defaultACL, true);
 
         //This is a work-around because unit-tests call ACRA more than once.
         if ( ! acraInitDone ) {
@@ -56,4 +79,6 @@ public class PageTurner extends Application {
 		config.locale = pageTurnerConfig.getLocale();
 	    context.getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());	    
 	}
+
+
 }
